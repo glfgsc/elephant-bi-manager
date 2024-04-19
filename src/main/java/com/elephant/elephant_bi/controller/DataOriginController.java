@@ -80,7 +80,7 @@ public class DataOriginController {
         if(flag){
             dbChangeService.changeDb(dataOrigin);
             DBContextHolder.setDataSource(dataOrigin.getName());
-            List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT schema_name FROM information_schema.schemata");
+            List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT schema_name as schema_name FROM information_schema.schemata");
             DBContextHolder.clearDataSource();
             return maps;
         }
