@@ -10,4 +10,6 @@ public interface WorkbookMapper {
     void insert(Workbook workbook);
 
     List<Workbook> selectByParentId(int parentId);
+
+    void update(Workbook workbook);
 }

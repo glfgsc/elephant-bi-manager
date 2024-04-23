@@ -26,4 +26,10 @@ public class WorkbookController {
         workbookService.insert(workbook);
         return 1;
     }
+
+    @PostMapping("/update")
+    public int update(@RequestBody Workbook workbook){
+        workbookService.update(workbook);
+        return 1;
+    }
 }

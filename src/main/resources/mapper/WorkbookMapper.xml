@@ -13,4 +13,12 @@
             from workbook
         where parentId = #{parentId}
     </select>
+
+    <update id="update" parameterType="workbook">
+        update workbook
+        set name = #{name},creator = #{creator},createTime = #{createTime},parentId = #{parentId},shareAnalysis = #{shareAnalysis},
+            position = #{position},size = #{size},type = #{type},fileType = #{fileType},path = #{path},updateTime = #{updateTime}
+        where id = #{id}
+    </update>
+    
 </mapper>

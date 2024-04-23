@@ -22,4 +22,9 @@ public class WorkbookServiceImpl implements WorkbookService {
     public List<Workbook> selectByParentId(@Param("parentId") int parentId) {
         return workbookMapper.selectByParentId(parentId);
     }
+
+    @Override
+    public void update(Workbook workbook) {
+        workbookMapper.update(workbook);
+    }
 }

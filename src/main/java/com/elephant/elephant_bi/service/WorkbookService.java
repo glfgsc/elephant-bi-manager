@@ -7,4 +7,5 @@ import java.util.List;
 public interface WorkbookService {
     void insert(Workbook workbook);
     List<Workbook> selectByParentId(int parentId);
+    void update(Workbook workbook);
 }
