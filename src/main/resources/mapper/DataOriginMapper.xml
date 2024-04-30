@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.elephant.elephant_bi.mapper.DataOriginMapper">
+    <resultMap type="com.elephant.elephant_bi.domain.pojo.DataOrigin" id="dataOriginMap">
+        <result property="connectionPool" column="connectionPool"  typeHandler="com.elephant.elephant_bi.framework.ObjectJsonHandler"/>
+    </resultMap>
+
+    <select id="selectAll" resultType="dataOrigin" resultMap="dataOriginMap">
+        select * from data_origin where name like concat('%',#{name},'%')
+    </select>
+
+    <select id="selectByPage"  resultType="dataOrigin" resultMap="dataOriginMap">
+        select * from data_origin where name like concat('%',#{name},'%')
+    </select>
+
+    <insert id="insert" parameterType="dataOrigin">
+        insert into data_origin (name,databaseType,driver,databaseName,host,port,user,password,charset,databaseSchema,url,creator,createTime,connectionPool) values(#{name},#{databaseType},#{driver},#{databaseName},#{host},#{port},#{user},#{password},#{charset},#{databaseSchema},#{url},#{creator},#{createTime},#{connectionPool,typeHandler=com.elephant.elephant_bi.framework.ObjectJsonHandler})
+    </insert>
+
+    <select id="checkName" resultType="int">
+        select #{name} in (select name from data_origin)
+    </select>
+
+    <update id="updateById" parameterType="dataOrigin">
+        update data_origin set name = #{name},databaseType = #{databaseType},driver = #{driver},databaseName=#{databaseName},
+                               host=#{host},port=#{port},user=#{user},password=#{password},charset=#{charset},databaseSchema=#{databaseSchema},
+                               url=#{url},creator=#{creator},createTime=#{createTime},connectionPool=#{connectionPool,typeHandler=com.elephant.elephant_bi.framework.ObjectJsonHandler}
+        where id = #{id}
+    </update>
+</mapper>

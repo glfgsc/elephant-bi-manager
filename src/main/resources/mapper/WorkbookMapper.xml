@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.elephant.elephant_bi.mapper.WorkbookMapper">
+    <insert id="insert" parameterType="workbook">
+        insert into workbook (name,creator,createTime,parentId,shareAnalysis,position,size,type,fileType,path)
+        values(#{name},#{creator},#{createTime},#{parentId},#{shareAnalysis},#{position},#{size},#{type},#{fileType},#{path})
+    </insert>
+
+    <select id="selectByParentId" resultType="workbook">
+        select *
+            from workbook
+        where parentId = #{parentId}
+        order by ${sortColumn}
+    </select>
+
+    <select id="selectByParentIdByName" resultType="workbook">
+        select *
+        from workbook
+        where name = #{name} and parentId = #{parentId}
+    </select>
+
+    <update id="update" parameterType="workbook">
+        update workbook
+        set name = #{name},creator = #{creator},createTime = #{createTime},parentId = #{parentId},shareAnalysis = #{shareAnalysis},
+            position = #{position},size = #{size},type = #{type},fileType = #{fileType},path = #{path},updateTime = #{updateTime}
+        where id = #{id}
+    </update>
+
+
+    <delete id="delete" parameterType="workbook">
+        delete from workbook where id = #{id}
+    </delete>
+</mapper>
